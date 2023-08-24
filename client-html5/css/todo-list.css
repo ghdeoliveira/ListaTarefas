@@ -1,13 +1,22 @@
 .gabriel-todo-list {
     box-sizing: border-box;
     padding: 10px;
+    background-color: rgba(245, 245, 245, 0.9);
+    border-radius: 15px;
+    margin-bottom: 25px;
+    
     
     & * {
         box-sizing: border-box;
     }
 
+    & h2 {
+        margin: 0;
+    }
+
     & .action-bar {
         display: flex;
+        border-radius: 15px;
         
         & > * {
             font-size: 1.25rem;
@@ -15,7 +24,7 @@
         } 
 
         & > *:hover {
-            background-color: red;
+            background-color: rgba(100, 100, 100, 0.3);
         }
 
         & input {
@@ -25,6 +34,7 @@
     }
 
     & .list {
+        border-radius: 15px;
         border: 1px solid;  
 
         & > div {

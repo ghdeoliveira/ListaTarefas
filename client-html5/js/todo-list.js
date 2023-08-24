@@ -4,7 +4,7 @@ function createLinkStyle() {
     if (style) return
     style = document.createElement("link")
     style.rel = "stylesheet"
-    style.href = "todo-list.css" // @REFATORAR
+    style.href = "./css/todo-list.css" // @REFATORAR
     document.head.append(style)
 }
 
@@ -12,7 +12,7 @@ function createActionbar () {
     const actionBar = document.createElement("div")
     const input = document.createElement("input")
     const addButton = document.createElement("button")
-    addButton.textContent = "ADICIONAR"
+    addButton.textContent = "+"
     actionBar.append(input, addButton)
     actionBar.className = "action-bar"
     return { actionBar, input, addButton }
@@ -38,10 +38,6 @@ function createItem (labelText) {
     return { item, checkbox, label, btDelete, btEdit }
 }
 
-function editItem (event) {
-    
-}
-
 export default function(rootElement) {
     if (!(rootElement instanceof HTMLElement))
         return   
@@ -61,6 +57,14 @@ export default function(rootElement) {
         btEdit.addEventListener("click", () => editItem())
         input.value = ""
         list.append(item)
+    }
+
+    const editItem = () => {
+        editItens = document.getElementsByClassName(".list");
+        Array.from(editItens).forEach((element, index) => {
+            element.a
+        });
+
     }
 
     // input.addEventListener("keydown", ({ key }) => key == "Enter" && addNewItem())
