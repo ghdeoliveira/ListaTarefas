@@ -1,5 +1,13 @@
 body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #353535;
+    /*
     background-image: url(../img/bkg2.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
     background-size: cover;
-    margin: 80px 80px auto;
+    height: 100vh;
+    */
 }

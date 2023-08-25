@@ -1,23 +1,24 @@
 .gabriel-todo-list {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 15px;
     background-color: rgba(245, 245, 245, 0.9);
     border-radius: 15px;
-    margin-bottom: 25px;
-    
-    
+    width: 90%;
+    margin: 50px auto;
+        
     & * {
         box-sizing: border-box;
+        font-family: 'Fira Sans', sans-serif;
     }
 
     & h2 {
         margin: 0;
+        padding-bottom: 5px;
     }
 
     & .action-bar {
         display: flex;
-        border-radius: 15px;
-        
+
         & > * {
             font-size: 1.25rem;
             padding: .5em;
@@ -28,8 +29,22 @@
         }
 
         & input {
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            margin-bottom: 10px;
             flex-grow: 1;
             outline: none;
+        }
+
+        & button {
+            margin-bottom: 10px;
+            margin-left: 5px;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            width: 50px;
+            background-color: rgb(77, 77, 77);
+            color: rgb(255, 166, 0);
+
         }
     }
 
@@ -45,7 +60,12 @@
                 font-size: 1.4rem;
             } 
 
+            & > input {
+                font-style: italic;
+            }
+
             & > span {
+                padding-left: 5px;
                 flex-grow: 1;
             }
         }
