@@ -32,8 +32,10 @@ function createItem (labelText) {
     const label = document.createElement("span")
     checkbox.type = "checkbox"
     btDelete.textContent = "🗑"
-    btEdit.textContent = "✏️"
+    btEdit.className = "edit"
+    btEdit.textContent = "edit"
     label.textContent = labelText
+    label.id = "span"
     item.append(checkbox, label, btDelete, btEdit)
     return { item, checkbox, label, btDelete, btEdit }
 }
@@ -54,17 +56,14 @@ export default function(rootElement) {
 
         const { item, btEdit, btDelete } = createItem(input.value)
         btDelete.addEventListener("click", () => item.remove())
-        btEdit.addEventListener("click", () => editItem())
+        btEdit.addEventListener("click", () => item.editItem())
         input.value = ""
         list.append(item)
     }
 
-    const editItem = () => {
-        editItens = document.getElementsByClassName(".list");
-        Array.from(editItens).forEach((element, index) => {
-            element.a
-        });
-
+    function editItem () {
+        const task = document.getElementById('span');
+        console.log(task.innerText);
     }
 
     // input.addEventListener("keydown", ({ key }) => key == "Enter" && addNewItem())
