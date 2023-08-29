@@ -86,7 +86,7 @@ export default function(rootElement) {
                 return
             }
             btEdit.className = "save"
-            iconEdit.className = "fa fa-floppy-disk"
+            iconEdit.className = "fa fa-check"
             label.setAttribute("contenteditable", "true")
             label.focus()
         })
