@@ -37,20 +37,12 @@ function createItem (labelText) {
     const checkbox = document.createElement("input")
     const btDelete = document.createElement("button")
     const btEdit = document.createElement("button")
-    const label = document.createElement("input")
+    const label = document.createElement("span")
     const iconDelete = document.createElement("i")
     const iconEdit = document.createElement("i")
 
     checkbox.type = "checkbox"
     checkbox.className = "checkbox"
-    checkbox.addEventListener("change", () => {
-        const label = item.querySelector(".item-label");
-        if (checkbox.checked) {
-            label.classList.add("completed"); 
-        } else {
-            label.classList.remove("completed");
-        }
-    });
 
     btDelete.append(iconDelete)
     iconDelete.className = "fa fa-trash"
@@ -62,11 +54,11 @@ function createItem (labelText) {
     label.value = labelText
     label.textContent = labelText
     label.className = "item-label"
-    label.setAttribute('readonly', 'readonly')
     label.type = 'text'
+    label.setAttribute("contenteditable", "false")
 
     item.append(checkbox, label, btEdit, btDelete)
-    return { item, checkbox, label, btEdit, btDelete }
+    return { item, checkbox, label, iconEdit, btEdit, btDelete }
 }
 
 export default function(rootElement) {
@@ -83,52 +75,28 @@ export default function(rootElement) {
         if (input.value == "") 
             return
 
-        const { item, btEdit, btDelete } = createItem(input.value)
+        const { item, checkbox, label, iconEdit, btEdit, btDelete } = createItem(input.value)
         btDelete.addEventListener("click", () => item.remove())
-        btEdit.addEventListener("click", (e) => editItem(item, btEdit))
+
+        btEdit.addEventListener("click", () => {
+            if (btEdit.className == "save") {
+                btEdit.className = "edit"
+                iconEdit.className = "fa fa-pencil"
+                label.removeAttribute("contenteditable")
+                return
+            }
+            btEdit.className = "save"
+            iconEdit.className = "fa fa-floppy-disk"
+            label.setAttribute("contenteditable", "true")
+            label.focus()
+        })
+
+        checkbox.addEventListener("change", () => {
+            label.classList.toggle("completed", checkbox.checked)
+        })
+
         input.value = ""
         list.append(item)
-    }
-    /*
-    function editItem(item, editButton) {
-        const label = document.querySelector(".item-label");
-        console.log(label)
-        if (editButton.innerText.toLowerCase() == 'edit') {
-            editButton.innerText = 'save';
-            label.removeAttribute("readonly");
-            label.focus();
-        }
-        else {
-            editButton.innerText = 'edit';
-            label.setAttribute('readonly', 'readonly');
-        }
-    }
-    */
-
-    function editItem(item, editButton) {
-        
-        const label = item.querySelector(".item-label");
-        const originalText = label.textContent;
-                
-        const editInput = document.createElement("input");
-        editInput.type = "text";
-        editInput.value = originalText;
-        label.replaceWith(editInput);
-
-        const saveButton = editButton;
-        //saveButton.innerText = "save";
-      
-        saveButton.addEventListener("click", () => {
-            const newText = editInput.value;
-            if (newText.trim() !== "") {
-                label.value = newText
-                label.textContent = newText;
-                //saveButton.innerText = "edit";
-                editButton = saveButton;
-            }
-            editInput.replaceWith(label);
-        });
-        list.removeEventListener("click", saveButton);
     }
 
     // input.addEventListener("keydown", ({ key }) => key == "Enter" && addNewItem())

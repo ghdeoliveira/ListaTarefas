@@ -25,7 +25,8 @@
         } 
 
         & > *:hover {
-            background-color: rgba(100, 100, 100, 0.3);
+            background-color: rgba(150, 150, 150, 0.39);
+            color: rgb(0, 0, 0);
         }
 
         & input {
@@ -44,7 +45,6 @@
             width: 50px;
             background-color: rgb(77, 77, 77);
             color: rgb(255, 166, 0);
-
         }
     }
 
